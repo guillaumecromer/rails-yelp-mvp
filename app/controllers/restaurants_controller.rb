@@ -22,6 +22,17 @@ class RestaurantsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if @restaurant.update(restaurant_params)
+      redirect_to @restaurant, notice: 'Restaurant was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
 private
   def set_restaurant
     @restaurant = Restaurant.find(params[:id])
